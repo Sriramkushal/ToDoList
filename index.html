@@ -62,14 +62,17 @@
             let elem=document.createElement('li');
             let btn1=document.createElement('button');
             let btn2=document.createElement('button');
+            let btn3=document.createElement('button');
             btn1.innerText="Done";
             btn2.innerText="Delete";
+            btn3.innerText="Edit"
             elem.innerText=input;
             let ul=document.querySelector('ul');
 
             ul.appendChild(elem);
             elem.appendChild(btn1);
             elem.appendChild(btn2);
+            elem.appendChild(btn3);
 
             //button styles to list
             btn1.style.border="none";
@@ -80,6 +83,10 @@
             btn2.style.marginLeft="2%";
             btn2.style.borderRadius="8px";
             btn2.style.backgroundColor="#b4b3d8";
+            btn3.style.border="none";
+            btn3.style.marginLeft="2%";
+            btn3.style.borderRadius="8px";
+            btn3.style.backgroundColor="#b4b3d8";
             //Adding functionality to add and delete
             btn1.addEventListener('click',
                 function(){
@@ -91,6 +98,20 @@
                     elem.remove();
                 }
             );
+            // document.getElementById('input').value="";
+            btn3.addEventListener('click',
+                function(){
+                    let newtext=document.getElementById('input');
+                    newtext.value=elem.firstChild.textContent;
+                    newtext.focus();
+                    newtext.onkeypress=function(event){
+                        if(event.key==="Enter"){
+                            elem.firstChild.textContent=newtext.value;
+                        }
+                        elem.remove();
+                    };
+                }
+            )
             document.getElementById('input').value="";
         }
     );
